@@ -8,9 +8,12 @@
 import SwiftUI
 
 @main
-struct visionOSSandboxApp: App {
-
+struct VisionOSSandboxApp: App {
     @State private var appModel = AppModel()
+
+    init() {
+        registerGizmosSystem()
+    }
 
     var body: some Scene {
         WindowGroup {
@@ -29,5 +32,10 @@ struct visionOSSandboxApp: App {
                 }
         }
         .immersionStyle(selection: .constant(.mixed), in: .mixed)
-     }
+    }
+}
+
+func registerGizmosSystem() {
+    GizmosComponent.registerComponent()
+    GizmosSystem.registerSystem()
 }
